@@ -18,15 +18,6 @@ class ProjectController extends Controller
         return view('projects.index' ,compact('projects'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('projects.create');
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +27,11 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Project::create(request()->validate([
+                'title'  =>  ['required','min:3'],
+                 'discription'  =>  ['required','max:225']
+            ]));
+         return redirect('/project');
     }
 
     /**
@@ -70,7 +65,14 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+       $attr = request()->validate([
+            'title'  =>  ['required','min:3'],
+             'discription'  =>  ['required','max:225']
+        ]);
+
+        $project->update($attr);
+
+        return redirect('/project');
     }
 
     /**
@@ -81,6 +83,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect('/project');
     }
 }

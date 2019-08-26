@@ -21,6 +21,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // projects routes
-Route::resource('project', 'ProjectController');
+Route::resource('project', 'ProjectController')->except('create');
 Auth::routes();
 
