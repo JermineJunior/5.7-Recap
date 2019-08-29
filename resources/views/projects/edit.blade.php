@@ -20,6 +20,11 @@
                                 <textarea  class="form-control" name="discription" rows="3" >{{$project->discription}} </textarea>
                             </div>
                             <button class="btn btn-primary" type="submit">Update </button>
+                            <form method="POST" action="/project/{{$project->id}}">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger">DELETE</button>
+                             </form>
                         </form>
                     </div>
                 </div>

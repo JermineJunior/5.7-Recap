@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-
+/*
     public function __construct()
     {
        $this->middleware('auth');
-    }
+    } */
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +34,7 @@ class ProjectController extends Controller
     {
         Project::create(request()->validate([
                 'title'  =>  ['required','min:3'],
-                 'discription'  =>  ['required','max:225']
+                'discription'  =>  ['required','max:225']
             ]));
          return redirect('/project');
     }

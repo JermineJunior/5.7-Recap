@@ -17,4 +17,10 @@ class Project extends Model
     {
         return 'project/'. $this->id;
     }
+
+    public function addTask($task)
+    {
+        $task = $this->task()->create($task);
+        return $task;
+    }
 }

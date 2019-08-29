@@ -11,7 +11,12 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" href="{{asset('css/bulma.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/main.css')}}">
-
+      <style>
+         .is-complete{
+             text-decoration: line-through;
+             text-decoration-color: red;
+         }
+      </style>
         <!-- Styles -->
 
     </head>

@@ -9,5 +9,6 @@
             @yield('content')
         </main>
     </div>
+    @include('partials._scripts')
 </body>
 </html>

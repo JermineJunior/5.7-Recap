@@ -22,5 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // projects routes
 Route::resource('project', 'ProjectController')->except('create');
+//task routes
+Route::post('/project/{project}/task','ProjectTasksController@store');
+Route::patch('/task/{task}', 'ProjectTasksController@update');
 Auth::routes();
 
