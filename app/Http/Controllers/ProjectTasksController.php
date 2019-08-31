@@ -10,16 +10,18 @@ class ProjectTasksController extends Controller
 
     public function store(Project $project)
     {
-      $project->addTask(request()->all());
+
+      $project->addTask(request()->validate([
+        'body' => ['required'],
+    ]));
 
       return back();
     }
     public function update(Task $task)
     {
-        $task->update([
-            'completed'  => request()->has('completed')
-        ]);
+       $call = request()->has('completed') ? 'complete' : 'incomplete';
 
+       $task->$call;
         return back();
     }
 }

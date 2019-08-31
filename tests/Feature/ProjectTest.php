@@ -52,12 +52,9 @@ class ProjectTest extends TestCase
 
         $this->signIn();
         $project = create('App\Project');
-        $response = $this->post('/project/{{$project->id}}/task',[
-            'project_id'=> 1,
-            'body'=> 'some body',
-            'completed'  => 0
-            ]);
-            $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection',$project->task);
+        $project->addTask(['body' =>  'some body']);
+
+        $this->assertDatabaseHas('tasks',['body' => 'some body']);
 
     }
 

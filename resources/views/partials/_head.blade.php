@@ -14,7 +14,9 @@
       <style>
          .is-complete{
              text-decoration: line-through;
-             text-decoration-color: red;
+         }
+         .task-box{
+             margin-left: 13px;
          }
       </style>
         <!-- Styles -->

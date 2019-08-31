@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-6 offset-md-1 ">
+    <div class="col-md-9 offset-md-1 ">
      <div class="card p-4 m-2">
          <div class="card-header">
             <h1 class="display-4">
@@ -36,22 +36,18 @@
     </div>
 
     </div>
-    <div class="col-md-3 offset-md-1 mt-3 mr-1">
-        <div class="box">
-            <div class="card-header">
-               <h3>Add a Task </h3>
-            </div>
+    <div class="col-md-8 offset-md-1 mt-2 mr-1 ">
+        <div class="box task-box">
+               <h2>Add a Task </h2>
         <form method="POST" action="/project/{{$project->id}}/task">
                 @csrf
                 <div class="form-group">
-                <input type="hidden" name="project_id" value="{{$project->id}}">
-                    <textarea
+                    <input
                     class="form-control m-2"
                     name="body"
-                    rows="3"
+                    type="text"
                     placeholder="write a task"
                     required>
-                    </textarea>
                     <button type="submit" class="btn btn-primary ml-2 pl-2">Add Task</button>
                 </div>
                 </form>
