@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\User;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-/*
+
     public function __construct()
     {
        $this->middleware('auth');
-    } */
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,23 +20,23 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
-        return view('projects.index' ,compact('projects'));
+        return view('projects.index' ,[
+            'projects' => auth()->user()->projects
+        ]);
     }
 
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Project $project)
     {
-        Project::create(request()->validate([
-                'title'  =>  ['required','min:3'],
-                'discription'  =>  ['required','max:225']
-            ]));
+       $attr = $this->validateRequest();
+        $project->create($attr + ['user_id' => auth()->id()]);
+
          return redirect('/project');
     }
 
@@ -47,6 +48,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+        $this->authorize('update');
         return view('projects.show' ,compact('project'));
     }
 
@@ -70,12 +72,9 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-       $attr = request()->validate([
-            'title'  =>  ['required','min:3'],
-             'discription'  =>  ['required','max:225']
-        ]);
 
-        $project->update($attr);
+
+        $project->update($this->validateRequest());
 
         return redirect('/project');
     }
@@ -90,5 +89,13 @@ class ProjectController extends Controller
     {
         $project->delete();
         return redirect('/project');
+    }
+
+    protected function validateRequest()
+    {
+        return request()->validate([
+            'title'  =>  ['required','min:3'],
+            'discription'  =>  ['required','max:225']
+        ]);
     }
 }
