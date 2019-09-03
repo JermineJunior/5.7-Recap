@@ -35,7 +35,7 @@ class ProjectController extends Controller
     public function store(Project $project)
     {
        $attr = $this->validateRequest();
-        $project->create($attr + ['user_id' => auth()->id()]);
+       $project->create($attr + ['user_id' => auth()->id()]);
 
          return redirect('/project');
     }
@@ -72,10 +72,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-
-
         $project->update($this->validateRequest());
-
         return redirect('/project');
     }
 
