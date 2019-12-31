@@ -1,7 +1,7 @@
 /*main rules*/
 
 html, body {
-    background-color: #fff;
+    background-color: rgb(150, 143, 143);
     color: #636b6f;
     font-family: 'Nunito', sans-serif;
     font-weight: 200;
@@ -12,4 +12,46 @@ html, body {
 .full-height {
     height: 100vh;
 }
-        
+.flex{
+    display: flex;
+    justify-content: center;
+
+}
+.one{
+    margin-right: auto;
+}
+.two{
+    background: transparent;
+}
+.project{
+    background-color:#fff;
+    margin:6px;
+    margin-bottom: 8px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 1px 1px  #636b6f;
+
+}
+.show{
+    width: 400px;
+    box-shadow: 2px 2px  #636b6f;
+
+}
+.project-title{
+   color:#636b6f;
+   font-family: monospace;
+   margin-left: -20px;
+   padding: 6px;
+   padding-left: 10px;
+   border-left: 3px solid #168585;
+   text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
+.discription{
+    color: #abafb1;
+    font-size: 14px;
+    padding: 0 6px 0;
+}
+

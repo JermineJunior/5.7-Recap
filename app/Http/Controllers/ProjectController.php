@@ -37,7 +37,7 @@ class ProjectController extends Controller
        $attr = $this->validateRequest();
        $project->create($attr + ['user_id' => auth()->id()]);
 
-         return redirect('/project');
+       return redirect('/project');
     }
 
     /**
@@ -48,7 +48,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $this->authorize('update');
+       /*  $this->authorize('update'); */
         return view('projects.show' ,compact('project'));
     }
 
